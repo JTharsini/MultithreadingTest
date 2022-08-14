@@ -23,7 +23,7 @@ public class SharedRunnableWithoutSynchronization
     @Override
     public void run()
     {
-      System.out.println("fieldObject :" + fieldObject);
+      System.out.println("fieldObject : " + fieldObject);
 
       // each thread has different reference in its stack
       // their actual object resides in heap
