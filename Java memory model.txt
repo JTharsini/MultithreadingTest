@@ -1,0 +1,20 @@
+Reason for not understanding the behaviour of threads is lack of understanding in Java memory model.
+In short,
+-Two types of memory area : Thread stack, heap
+        Thread stack:
+                -Thread stack keeps
+                        -copy of local variables for each method it's executed (all methods in the call stack)
+                        -methods the thread has called to reach the current point of execution (call stack)
+                        -partial result from the execution
+                     -for primitive type (variable's value)
+                     -for object type (object's reference) (Actual object for this reference will be in heap)
+                     -method stack and local variables of methods for an object (either local variable or member variable of runnable)
+                -belongs to each thread and cannot be accessed by another thread
+
+        Heap:
+        -Heap keeps
+            -An object's member variables along with the object (both of object type and primitive type)
+            -Static class variables along with the class definition
+        -values here (Objects and its member variables) can be seen by all the threads that have reference to them
+        -If values need to be shared among threads then it should be used
+Values are written to RAM through cache. In some CPU architectures value in the cache will be visible to other threads through cache coherence strategy.
