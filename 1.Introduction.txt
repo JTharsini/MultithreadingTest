@@ -1,0 +1,41 @@
+Single tasking in Early computing: One CPU or computer can run one program (process) at a time.
+
+Multi-tasking in Early computing: One CPU or computer can run multiple programs (process) at a time – by switching between executing one program at a time for a little time and then switch to the next. Since switching is faster human can’t detect the switching.
+
+Multi-threading : One CPU or computer can run multiple programs (process) at a time. Multiple threads are executed inside one such program. They do different tasks just like processes (switching inside application)
+
+Multi-threading with multiple CPUs: Multiple CPUs in one computer runs multiple processes. Those processes run multiple threads. Good for softwares required lots of processing power. Such as 3D rendering software, video editing software and computer games.
+
+Why multi-threading?
+
+1. Better CPU utilisation
+
+While a thread need to read data from disk or network and it cannot proceed its execution, another thread can continue its execution without keeping CPU idle.
+
+2.  2. Better IO utilisation
+
+While a thread need to do some computation using CPU and it cannot proceed with reading data from disk or network, another thread can read data without keeping disk or network IO idle. This enables creating multiple threads, initiating connection by them altogether with slow servers and downloading different parts of data to stimulate performance of IO.
+
+3. Higher application responsiveness
+
+Let’s say an application with heavy long running task. For example, a huge amount of data to be processed to show them in the UI. Then while doing that task application will not respond to user. Multi-threading enables creating separate thread and switching to that thread and the UI thread so that user will see application as responsive. If long running task gets executed in another CPU, no need to switch between UI thread and the task thread.
+
+Issues in multi-threading
+
+Shared mutable state has following issues:
+
+Race conditions
+Visible writes
+Congestion
+Deadlock
+Nested monitor lockout
+Starvation
+Slipped conditions
+Missed signals
+These problems can be addressed with some constructs or else “no shared mutable state concurrency” can be used. "No shared mutable state concurrency" has various models. 
+
+Separate state concurrency: only messages are passed between threads and they don’t share access to any writable state in the application
+Functional parallelism
+Parallel pipelines
+Reference:
+Jakob Jenkov
