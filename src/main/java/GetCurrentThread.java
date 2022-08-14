@@ -5,7 +5,7 @@ public class GetCurrentThread
     Thread thread = new Thread(() -> {
       String threadName = Thread.currentThread().getName();
       System.out.println(threadName);
-    });
+    }, "JJThread");
     thread.start();
   }
 }
