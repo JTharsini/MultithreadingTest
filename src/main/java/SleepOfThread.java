@@ -4,14 +4,16 @@ public class SleepOfThread
   {
     Runnable runnable = () -> {
       String threadName = Thread.currentThread().getName();
-      System.out.println(threadName);
+      System.out.println(threadName + " is started");
+      System.out.println(threadName + " is finished");
     };
     Runnable runnable2 = () -> {
       String threadName = Thread.currentThread().getName();
+      System.out.println(threadName + " is started");
       try
       {
         Thread.sleep(2000);
-        System.out.println(threadName);
+        System.out.println(threadName + " is finished");
       }
       catch (InterruptedException e)
       {
