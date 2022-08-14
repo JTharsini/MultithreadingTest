@@ -1,0 +1,32 @@
+Java thread is like a virtual CPU that can execute code inside of a Java application. In a Java program main method is actually executed by a thread when Java Virtual Machine starts up the application. When we create a thread and start it inside a main method, it will start the thread running in parallel with the main thread. It means two threads are running in parallel at the same time. If nothing needs to be done, then the thread start and stop immediately.
+https://github.com/JTharsini/MultithreadingTest/blob/main/src/main/java/CreateThread.java
+There are four different ways to specify what code a thread should run.
+1.	Create a class extending Thread class and override the run method
+https://github.com/JTharsini/MultithreadingTest/blob/main/src/main/java/ExtendingThreadAndOverridingRun.java
+
+2.	Implementing Runnable interface and pass implementation’s instance to thread object’s constructor so that it will execute the run method of the Runnable implementation
+https://github.com/JTharsini/MultithreadingTest/blob/main/src/main/java/ImplementingRunnableInterface.java
+
+3.	Annonymous inner class of Runnable interface as constructor parameter for thread object
+https://github.com/JTharsini/MultithreadingTest/blob/main/src/main/java/AnnonymousClassOfRunnableInterface.java
+
+4.	Using Lambda expression
+https://github.com/JTharsini/MultithreadingTest/blob/main/src/main/java/LambdaExpressionOfRunnableInterface.java
+
+Runnable can obtain currently executing thread’s reference by thread.currentThread method. When two threads are running no way to enforce the order. Because there is no guarantee for order of the switching between threads underneath by CPU and OS.
+https://github.com/JTharsini/MultithreadingTest/blob/main/src/main/java/GetCurrentThread.java
+
+Thread.sleep helps to get a thread to sleep.
+https://github.com/JTharsini/MultithreadingTest/blob/main/src/main/java/SleepOfThread.java
+
+Java Thread class has method stop(). That is deprecated and shouldn’t be called. When we call that thread will stop. But we don’t know in which state application stops. It leaves the application in undefined state. Therefore we need to manage it ourselves. Synchronized method can be called by only one thread at a time within the class’s object.
+https://github.com/JTharsini/MultithreadingTest/blob/main/src/main/java/StoppableThread.java
+
+The Java Virtual Machine will stay alive as long as there are any remaining threads are running even if main thread terminates.
+
+https://github.com/JTharsini/MultithreadingTest/blob/main/src/main/java/ThreadRunsEvenMainTerminated.java
+To stop the JVM if a thread is the only one to run, then that thread should be marked as setDaemon(true). Need to make sure daemon threads are not stopped in the middle of something.
+https://github.com/JTharsini/MultithreadingTest/blob/main/src/main/java/JVMExitsIfItsTheOnlyThread.java
+It’s possible other threads to wait until a particular thread terminates. When we call join method in a thread, other threads need to wait until that thread is finishing its execution. For example usually nobody waits for daemon thread. If join is used in a daemon thread then others need to wait for it.
+https://github.com/JTharsini/MultithreadingTest/blob/main/src/main/java/OtherThreadsWaitUntilAParticularThreadTerminates.java
+Threads which are managed by OS that JVM is running on is known as OS level threads. They are often more heavy, requiring 1-2MB stackspace for each thread. More thread allocation takes more space. That’s why Java has project named “project loom” to create more light weight threads, managed by application – by JVM itself. They have alternative names such as “green threads” or “fibers”.
