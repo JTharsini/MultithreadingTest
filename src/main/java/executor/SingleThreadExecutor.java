@@ -7,8 +7,11 @@ public class SingleThreadExecutor
 {
   public static void main(String[] args)
   {
-    ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();
-    singleThreadExecutor.execute(() -> System.out.println("Hello world!"));
-    singleThreadExecutor.shutdown();
+    ExecutorService fixedThreadPool = Executors.newFixedThreadPool(3);
+    // fixedThreadPool is same as singleThreadExecutor
+    ExecutorService singleThreadPool = Executors.newSingleThreadExecutor();
+    singleThreadPool.execute(() -> System.out.println("Hello world!"));
+
+    singleThreadPool.shutdown();
   }
 }
